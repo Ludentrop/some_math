@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(
     prog="primes", description="Find primes in a range or a sequence"
 )
 parser.add_argument("range", nargs="*", type=int, help="range(start, stop)")
-parser.add_argument("-c", action="store_true",  help="check if a num is prime")
+parser.add_argument("-c", action="store_true", help="check if a num is prime")
 args = parser.parse_args()
 
 
