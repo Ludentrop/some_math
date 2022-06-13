@@ -10,7 +10,8 @@ import argparse
 parser = argparse.ArgumentParser(
     prog="primes", description="Find primes in a range or a sequence"
 )
-parser.add_argument("range", nargs="*", type=int, help="Start position")
+parser.add_argument("range", nargs="*", type=int, help="range(start, stop)")
+parser.add_argument("-c", action="store_true",  help="check if a num is prime")
 args = parser.parse_args()
 
 
@@ -82,11 +83,13 @@ def main() -> None:
     """
     The function is used to display results if the file run as a script
     """
-    prime = Prime(*args.range)
-    print(f"\nPrime numbers in a range of {prime.start} to {prime.stop}:")
-    print(" \n\t", *list(prime.prime_rng()), end="\n\n")
-    print(f"Prime numbers sequence of length from {prime.start} to {prime.stop}:")
-    print(" \n\t", *prime.prime_seq(), end="\n\n")
+    if not args.c:
+        prime = Prime(*args.range)
+        print(f"\nPrime numbers in a range of {prime.start} to {prime.stop}:")
+        print(" \n\t", *list(prime.prime_rng()), end="\n\n")
+        print(f"Prime numbers sequence of length of {prime.stop}:")
+        print(" \n\t", *prime.prime_seq(), end="\n\n")
+    print(is_prime(args.range[0]))
 
 
 if __name__ == "__main__":
